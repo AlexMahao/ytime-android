@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    String url = "";
+    String url = "https://help.huli.com/element/androidbanner/index.json";
     @Test
     public void addition_isCorrect() throws Exception {
         // 设置网络连接
