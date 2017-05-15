@@ -1,4 +1,4 @@
-package com.spearbothy.ytime.net;
+package com.spearbothy.ytime;
 
 /**
  * Created by mahao on 17-5-9.
