@@ -1,8 +1,9 @@
-package com.spearbothy.ytime.adapter;
+package com.spearbothy.ytime.net.adapter;
 
 import android.os.Handler;
 import android.os.Looper;
 
+import com.spearbothy.ytime.net.BuildConfig;
 import com.spearbothy.ytime.net.HttpRequest;
 import com.spearbothy.ytime.net.HttpResult;
 import com.spearbothy.ytime.net.INetAdapter;
