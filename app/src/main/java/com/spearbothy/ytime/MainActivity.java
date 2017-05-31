@@ -1,15 +1,13 @@
 package com.spearbothy.ytime;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.spearbothy.ytime.net.HttpMethod;
 import com.spearbothy.ytime.net.HttpResult;
-import com.spearbothy.ytime.net.HttpUtils;
-
-import java.util.ArrayList;
+import com.spearbothy.ytime.netimpl.entity.User;
+import com.spearbothy.ytime.netimpl.request.RegisterRequest;
+import com.spearbothy.ytime.netimpl.response.BaseResponse;
 
 public class MainActivity extends AppCompatActivity {
     String url = "https://help.huli.com/element/androidbanner/index.json";
@@ -20,25 +18,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextView = ((TextView) findViewById(R.id.textView));
-
         requestContent();
     }
 
     private void requestContent() {
-        HttpUtils.getRequest(new ArrayList<Bean>())
-                .setUrl(url)
-                .setMethod(HttpMethod.GET)
-                .build()
-                .execute(new HttpResult<ArrayList<Bean>>() {
+        new RegisterRequest()
+                .setName("1235312321")
+                .setPassword("12312312312")
+                .execute(new HttpResult<BaseResponse<User>>() {
                     @Override
-                    public void onSuccess(ArrayList<Bean> data) {
+                    public void onSuccess(BaseResponse<User> data) {
                         mTextView.setText(data.toString());
                     }
 
                     @Override
                     public void onError(int code, String msg) {
-                        Toast.makeText(MainActivity.this, code+":"+msg, Toast.LENGTH_SHORT).show();
+                        mTextView.setText(msg);
                     }
                 });
+
     }
 }

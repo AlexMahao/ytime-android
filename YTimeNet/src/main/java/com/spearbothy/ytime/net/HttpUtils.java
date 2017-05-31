@@ -19,7 +19,7 @@ public class HttpUtils {
         sIParser = IParser;
     }
 
-    public static <T> HttpRequest<T> getRequest(T response){
+    public static <T> HttpRequest<T> getRequest(Class<T> response){
         return new HttpRequest<T>(response);
     }
 

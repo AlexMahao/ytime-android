@@ -14,18 +14,18 @@ public class HttpRequest<T> {
     private Map<String, String> mParams = new HashMap<>();
     private HttpMethod mMethod = HttpMethod.GET;
     private String url;
-    private T mResponse;
+//    private T mResponse;
     private String mTag; // 取消任务
     private Class<T> tClass;
 
-    public HttpRequest(T mResponse) {
-        this.mResponse = mResponse;
-        this.tClass = (Class<T>) mResponse.getClass();
+    public HttpRequest(Class<T> mResponse) {
+//        this.mResponse = mResponse;
+        this.tClass = mResponse;
     }
 
-    public T getResponse() {
-        return mResponse;
-    }
+//    public T getResponse() {
+//        return mResponse;
+//    }
 
     public Class<T> gettClass() {
         return tClass;
@@ -65,8 +65,17 @@ public class HttpRequest<T> {
         return this;
     }
 
-    public HttpRequest<T> addParams(String key,String value){
+    public HttpRequest<T> addHeaders(Map<String,String> headers){
+        mHeaderParams.putAll(headers);
+        return this;
+    }
+
+    public HttpRequest<T> addParam(String key,String value){
         mParams.put(key,value);
+        return this;
+    }
+    public HttpRequest<T> addParams(Map<String,String> params){
+        mParams.putAll(params);
         return this;
     }
 
