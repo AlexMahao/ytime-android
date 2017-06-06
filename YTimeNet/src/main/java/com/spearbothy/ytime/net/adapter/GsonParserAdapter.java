@@ -1,6 +1,5 @@
 package com.spearbothy.ytime.net.adapter;
 
-import com.google.gson.Gson;
 import com.spearbothy.ytime.net.GsonUtil;
 import com.spearbothy.ytime.net.IParser;
 
@@ -17,6 +16,6 @@ public class GsonParserAdapter implements IParser {
 
     @Override
     public <T> T fromJson(String data, Class<T> tClass) throws Exception {
-        return GsonUtil.GsonToBean(data,tClass);
+        return GsonUtil.GsonToBean(data, tClass);
     }
 }

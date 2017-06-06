@@ -6,7 +6,7 @@ package com.spearbothy.ytime.net;
  */
 public interface INetAdapter {
 
-    void execute(HttpRequest request,HttpResult<String> httpResult);
+    void execute(HttpRequest request, HttpResult<String> httpResult);
 
-     void cancel(String tag);
+    void cancel(String tag);
 }

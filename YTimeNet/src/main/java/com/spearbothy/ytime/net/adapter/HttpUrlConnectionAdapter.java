@@ -21,22 +21,22 @@ public class HttpUrlConnectionAdapter implements INetAdapter {
         try {
             URL url = new URL(request.getUrl());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            if(request.getMethod() == HttpMethod.GET){
+            if (request.getMethod() == HttpMethod.GET) {
                 conn.setRequestMethod("GET");
-            }else if(request.getMethod()==HttpMethod.POST){
+            } else if (request.getMethod() == HttpMethod.POST) {
                 conn.setRequestMethod("POST");
             }
             conn.setDoOutput(true);
             conn.setDoInput(true);
             conn.connect();
-            if(conn.getResponseCode()==200){
+            if (conn.getResponseCode() == 200) {
                 //得到输入流
-                InputStream is =conn.getInputStream();
+                InputStream is = conn.getInputStream();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] buffer = new byte[1024];
                 int len = 0;
-                while(-1 != (len = is.read(buffer))){
-                    baos.write(buffer,0,len);
+                while (-1 != (len = is.read(buffer))) {
+                    baos.write(buffer, 0, len);
                     baos.flush();
                 }
                 httpResult.onSuccess(baos.toString("utf-8"));
@@ -46,7 +46,7 @@ public class HttpUrlConnectionAdapter implements INetAdapter {
             e.printStackTrace();
         }
 
-        httpResult.onError(HttpResult.NET_ERROR,"网络错误");
+        httpResult.onError(HttpResult.NET_ERROR, "网络错误");
     }
 
     @Override

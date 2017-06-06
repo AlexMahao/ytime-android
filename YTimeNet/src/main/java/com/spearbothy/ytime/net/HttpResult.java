@@ -12,5 +12,5 @@ public interface HttpResult<T> {
 
     void onSuccess(T data);
 
-    void onError(int code,String msg);
+    void onError(int code, String msg);
 }

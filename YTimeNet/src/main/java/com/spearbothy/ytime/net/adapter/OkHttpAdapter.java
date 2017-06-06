@@ -2,6 +2,7 @@ package com.spearbothy.ytime.net.adapter;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.spearbothy.ytime.net.BuildConfig;
 import com.spearbothy.ytime.net.HttpRequest;
@@ -101,7 +102,16 @@ public class OkHttpAdapter implements INetAdapter {
 
     @Override
     public void cancel(String tag) {
-
+        for (Call call : mClient.dispatcher().queuedCalls()) {
+            if (tag.equals(call.request().tag())) {
+                call.cancel();
+            }
+        }
+        for (Call call : mClient.dispatcher().runningCalls()) {
+            if (tag.equals(call.request().tag())) {
+                call.cancel();
+            }
+        }
     }
 
     private String buildGetParams(Map<String, String> params) {

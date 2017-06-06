@@ -1,9 +1,10 @@
 package com.spearbothy.ytime.net;
 
-import android.util.ArrayMap;
+import android.text.TextUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * 数据请求
@@ -14,7 +15,7 @@ public class HttpRequest<T> {
     private Map<String, String> mParams = new HashMap<>();
     private HttpMethod mMethod = HttpMethod.GET;
     private String url;
-//    private T mResponse;
+    //    private T mResponse;
     private String mTag; // 取消任务
     private Class<T> tClass;
 
@@ -31,7 +32,7 @@ public class HttpRequest<T> {
         return tClass;
     }
 
-    public HttpRequest<T>  setUrl(String url) {
+    public HttpRequest<T> setUrl(String url) {
         this.url = url;
         return this;
     }
@@ -60,32 +61,36 @@ public class HttpRequest<T> {
         return mMethod;
     }
 
-    public HttpRequest<T> addHeader(String key, String value){
-        mHeaderParams.put(key,value);
+    public HttpRequest<T> addHeader(String key, String value) {
+        mHeaderParams.put(key, value);
         return this;
     }
 
-    public HttpRequest<T> addHeaders(Map<String,String> headers){
+    public HttpRequest<T> addHeaders(Map<String, String> headers) {
         mHeaderParams.putAll(headers);
         return this;
     }
 
-    public HttpRequest<T> addParam(String key,String value){
-        mParams.put(key,value);
+    public HttpRequest<T> addParam(String key, String value) {
+        mParams.put(key, value);
         return this;
     }
-    public HttpRequest<T> addParams(Map<String,String> params){
+
+    public HttpRequest<T> addParams(Map<String, String> params) {
         mParams.putAll(params);
         return this;
     }
 
-    public HttpRequest<T> setMethod(HttpMethod method){
+    public HttpRequest<T> setMethod(HttpMethod method) {
         mMethod = method;
         return this;
     }
 
-   public HttpClient<T> build(){
-       return new HttpClient<T>(this);
-   }
+    public HttpClient<T> build() {
+        if (mTag == null || mTag == "") {
+            mTag = UUID.randomUUID().toString();
+        }
+        return new HttpClient<T>(this);
+    }
 
 }
