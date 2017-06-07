@@ -1,5 +1,6 @@
 package com.spearbothy.ytime.netimpl.request;
 
+import com.spearbothy.ytime.net.HttpClient;
 import com.spearbothy.ytime.net.HttpMethod;
 import com.spearbothy.ytime.net.HttpResult;
 import com.spearbothy.ytime.net.HttpUtils;
@@ -14,16 +15,22 @@ import java.util.Map;
  */
 public abstract class BaseRequest<T> implements Request<T> {
 
-    private Map<String,String> mHeaderParams = new HashMap<>();
+    private HttpClient<T> client;
 
-    public void execute(HttpResult<T> result){
-        HttpUtils.getRequest(getResponseClass())
+    private Map<String, String> mHeaderParams = new HashMap<>();
+
+    public void execute(HttpResult<T> result) {
+        client = HttpUtils.getRequest(getResponseClass())
                 .setUrl(getUrl())
                 .addParams(getParams())
                 .addHeaders(getHeaderParams())
                 .setMethod(getMethod())
                 .build()
                 .execute(result);
+    }
+
+    public void cancel() {
+        client.cancel();
     }
 
     @Override
