@@ -2,6 +2,7 @@ package com.spearbothy.ytime.netimpl.request;
 
 import com.spearbothy.ytime.net.HttpMethod;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,8 +17,11 @@ public interface Request<T> {
 
     HttpMethod getMethod();
 
-    Map<String,String> getParams();
+    Map<String, String> getParams();
 
-    Map<String,String> getHeaderParams();
+    Map<String, String> getHeaderParams();
 
+    void cancel();
+
+    void addToList(List<Request> list);
 }

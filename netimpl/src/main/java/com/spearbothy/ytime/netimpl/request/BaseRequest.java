@@ -8,6 +8,7 @@ import com.spearbothy.ytime.netimpl.Urls;
 import com.spearbothy.ytime.netimpl.YTimeUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +30,7 @@ public abstract class BaseRequest<T> implements Request<T> {
                 .execute(result);
     }
 
+    @Override
     public void cancel() {
         client.cancel();
     }
@@ -36,6 +38,11 @@ public abstract class BaseRequest<T> implements Request<T> {
     @Override
     public HttpMethod getMethod() {
         return HttpMethod.GET;
+    }
+
+    @Override
+    public void addToList(List<Request> list) {
+        list.add(this);
     }
 
     @Override
