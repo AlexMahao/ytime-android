@@ -1,6 +1,9 @@
 package com.spearbothy.ytime.dagger;
 
 
+import com.spearbothy.ytime.ui.LoginActivity;
+import com.spearbothy.ytime.ui.SplashActivity;
+
 import dagger.Component;
 
 /**
@@ -10,4 +13,7 @@ import dagger.Component;
 @Component(dependencies = AppComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
 
+    void inject(SplashActivity splashActivity);
+
+    void inject(LoginActivity loginActivity);
 }

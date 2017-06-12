@@ -3,16 +3,27 @@ package com.spearbothy.ytime.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.spearbothy.ytime.YTimeApp;
+
 /**
  * Created by mahao on 17-6-7.
  */
 
 public class SPUtils {
 
-    private SharedPreferences sp;
+    private  SharedPreferences sp;
 
-    public SPUtils(Context context) {
+    private static SPUtils sSPUtils;
+
+    private SPUtils(Context context) {
         sp = context.getSharedPreferences("ytime", Context.MODE_PRIVATE);
+    }
+
+    public static SPUtils getInstance(){
+        if(sSPUtils == null){
+            sSPUtils = new SPUtils(YTimeApp.sApp);
+        }
+        return sSPUtils;
     }
 
     public void put(String key, String value) {

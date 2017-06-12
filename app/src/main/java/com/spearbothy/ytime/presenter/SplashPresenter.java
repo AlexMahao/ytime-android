@@ -12,5 +12,13 @@ public class SplashPresenter extends BasePresenter<SplashView> {
 
     @Inject
     public SplashPresenter() {
+
+    }
+
+    /**
+     * 跳转首页
+     */
+    public void goHome() {
+
     }
 }

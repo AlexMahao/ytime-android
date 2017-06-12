@@ -27,9 +27,4 @@ public class AppModule {
         return app;
     }
 
-    @Singleton
-    @Provides
-    SPUtils provideSPUtils(YTimeApp app){
-        return new SPUtils(app);
-    }
 }
