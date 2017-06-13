@@ -20,5 +20,4 @@ public interface AppComponent {
     // 向依赖类提供对象
     YTimeApp getApp();
 
-    SPUtils getSPUtils();
 }

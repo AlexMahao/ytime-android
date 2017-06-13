@@ -1,6 +1,7 @@
 package com.spearbothy.ytime.dagger;
 
 
+import com.spearbothy.ytime.ui.HomeActivity;
 import com.spearbothy.ytime.ui.LoginActivity;
 import com.spearbothy.ytime.ui.SplashActivity;
 
@@ -16,4 +17,6 @@ public interface ActivityComponent {
     void inject(SplashActivity splashActivity);
 
     void inject(LoginActivity loginActivity);
+
+    void inject(HomeActivity homeActivity);
 }

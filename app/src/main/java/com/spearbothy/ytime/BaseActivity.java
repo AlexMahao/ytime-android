@@ -1,6 +1,5 @@
 package com.spearbothy.ytime;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import com.spearbothy.ytime.dagger.DaggerActivityComponent;
 import com.spearbothy.ytime.presenter.IPresenter;
 import com.spearbothy.ytime.utils.AppManager;
 import com.spearbothy.ytime.view.IView;
+import com.spearbothy.ytime.widget.LoadingDialog;
 
 import javax.inject.Inject;
 
@@ -32,7 +32,7 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
     public T presenter; // presenter对象
 
     @Inject
-    protected Lazy<ProgressDialog> dialog; // 每一个activity中都需要一个dialog的实例
+    protected Lazy<LoadingDialog> dialog; // 每一个activity中都需要一个dialog的实例
 
     @Inject
     protected YTimeApp app; // 上下文对象
