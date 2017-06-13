@@ -2,5 +2,13 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FF7f00</color>
+
+    <color name="text_first">#333</color>
+    <color name="text_second">#666</color>
+    <color name="text_third">#999</color>
+
+    <color name="submit_button_color">#FE6C46</color>
+    <color name="submit_button_press">#FF5027</color>
+    <color name="submit_button_disable">#FFd9cf</color>
 </resources>

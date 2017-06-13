@@ -1,5 +1,7 @@
 package com.spearbothy.ytime.ui;
 
+import android.support.v7.widget.CardView;
+
 import com.spearbothy.ytime.BaseActivity;
 import com.spearbothy.ytime.dagger.ActivityComponent;
 import com.spearbothy.ytime.presenter.LoginPresenter;
